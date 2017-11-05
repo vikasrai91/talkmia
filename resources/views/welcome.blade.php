@@ -1,95 +1,50 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=Edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0"/>
+    <title>Hyphenate web demo</title>
+    <!-- HTML5 element  -->
+    <script src="/js/demo/javascript/dist/browser-polyfill.min.js"></script>
+</head>
 
-        <title>Laravel</title>
+<body>
+<section id='main' class='w100'>
+    <article id='demo'></article>
+    <article id='components'></article>
+</section>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<!--config-->
+<script src="/js/demo/javascript/dist/webim.config.js"></script>
+<script>
+    if (WebIM.config.isWindowSDK) {
+        document.title = "Hyphenate web demo with Windows SDK";
+    }
+    if (WebIM.config.isDebug) {
+        document.write("<script src='/js/sdk/dist/strophe-1.2.8.js'><\/script>");
+    } else {
+        <!--A JavaScript library for XMPP over Websocket-->
+        document.write("<script src='/js/sdk/dist/strophe-1.2.8.min.js'><\/script>");
+    }
+</script>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+<!--sdk-->
+<script src='/js/sdk/dist/websdk-1.4.11.js'></script>
+<!--webrtc-->
+<script>
+    if (WebIM.config.isWebRTC) {
+        document.write("<script src='/js/webrtc/dist/adapter.js'><\/script>");
+        document.write("<script src='/js/webrtc/dist/webrtc-1.4.11.js'><\/script>");
+    }
+</script>
 
-            .full-height {
-                height: 100vh;
-            }
+<!--[if lte IE 9]>
+<script src="./demo/javascript/dist/swfupload/swfupload.min.js"></script>
+<![endif]-->
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<!--demo javascript-->
+<script src="/js/demo/javascript/dist/demo-1.4.11.js"></script>
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
+</body>
 </html>
